@@ -27,7 +27,7 @@ type GORMOrderRepository struct {
 	db *gorm.DB
 }
 
-func newGORMOrderRepository(dataSourceURL string) (*GORMOrderRepository, error) {
+func NewGORMOrderRepository(dataSourceURL string) (*GORMOrderRepository, error) {
 	db, err := gorm.Open(mysql.Open(dataSourceURL), &gorm.Config{})
 	if err != nil {
 		return nil, fmt.Errorf("db connection error: %v", err)
