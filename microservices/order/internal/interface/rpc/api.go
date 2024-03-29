@@ -5,11 +5,11 @@ import (
 	"log"
 	"net"
 
-	"github.com/peppydays/grpc-microservices-in-go/idl/contract/go/order"
+	"github.com/peppydays/grpc-in-go-service/idl/contract/go/order"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/peppydays/grpc-microservices-in-go/microservices/order/internal/domain"
+	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/domain"
 )
 
 type API struct {

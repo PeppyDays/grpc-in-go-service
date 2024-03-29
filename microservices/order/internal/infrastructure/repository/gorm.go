@@ -3,7 +3,7 @@ package repository
 import (
 	"fmt"
 
-	"github.com/peppydays/grpc-microservices-in-go/microservices/order/internal/domain"
+	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/domain"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

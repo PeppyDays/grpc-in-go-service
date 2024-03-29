@@ -1,7 +1,7 @@
 package application
 
 import (
-	"github.com/peppydays/grpc-microservices-in-go/microservices/order/internal/domain"
+	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/domain"
 )
 
 type OrderService struct {
