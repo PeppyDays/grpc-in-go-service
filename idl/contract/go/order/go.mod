@@ -1,4 +1,4 @@
-module github.com/peppydays/grpc-microservices-in-go/idl/contract/go/order
+module github.com/peppydays/grpc-in-go-service/idl/contract/go/order
 
 go 1.22
 
