@@ -5,17 +5,24 @@ import (
 )
 
 type OrderService struct {
-	repository domain.OrderRepository
+	repository     domain.OrderRepository
+	paymentGateway domain.PaymentGateway
 }
 
-func NewOrderService(repository domain.OrderRepository) *OrderService {
+func NewOrderService(repository domain.OrderRepository, paymentGateway domain.PaymentGateway) *OrderService {
 	return &OrderService{
-		repository: repository,
+		repository:     repository,
+		paymentGateway: paymentGateway,
 	}
 }
 
 func (s OrderService) PlaceOrder(order domain.Order) (domain.Order, error) {
 	err := s.repository.Save(&order)
+	if err != nil {
+		return domain.Order{}, err
+	}
+
+	err = s.paymentGateway.Charge(&order)
 	if err != nil {
 		return domain.Order{}, err
 	}

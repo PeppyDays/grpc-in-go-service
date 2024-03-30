@@ -7,6 +7,7 @@ import (
 
 	"github.com/peppydays/grpc-in-go-service/microservices/order/configs"
 	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/application"
+	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/infrastructure/gateway"
 	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/infrastructure/repository"
 	"github.com/peppydays/grpc-in-go-service/microservices/order/internal/interface/rpc"
 )
@@ -16,7 +17,13 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to connect to the database due to error %v", err)
 	}
-	service := application.NewOrderService(repository)
+
+	paymentGateway, err := gateway.NewPaymentGateway(configs.GetPaymentServiceURL())
+	if err != nil {
+		log.Fatalf("failed to initialise payment stub due to error %v", err)
+	}
+
+	service := application.NewOrderService(repository, paymentGateway)
 
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", configs.GetApplicationPort()))
 	if err != nil {
