@@ -28,7 +28,7 @@ func RunAPI(listener net.Listener, service domain.OrderService) {
 	}
 }
 
-func (api API) Create(context context.Context, request *order.CreateOrderRequest) (*order.CreateOrderResponse, error) {
+func (a API) Create(ctx context.Context, request *order.CreateOrderRequest) (*order.CreateOrderResponse, error) {
 	var orderItems []domain.OrderItem
 
 	for _, orderItem := range request.OrderItems {
@@ -40,7 +40,7 @@ func (api API) Create(context context.Context, request *order.CreateOrderRequest
 	}
 	newOrder := domain.NewOrder(request.UserId, orderItems)
 
-	result, err := api.service.PlaceOrder(newOrder)
+	result, err := a.service.PlaceOrder(newOrder)
 	if err != nil {
 		return nil, err
 	}

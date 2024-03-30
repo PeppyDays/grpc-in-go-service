@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-	repository, err := repository.NewGORMOrderRepository(configs.GetDataSourceURL())
+	orderRepository, err := repository.NewGORMOrderRepository(configs.GetDataSourceURL())
 	if err != nil {
 		log.Fatalf("failed to connect to the database due to error %v", err)
 	}
@@ -23,12 +23,12 @@ func main() {
 		log.Fatalf("failed to initialise payment stub due to error %v", err)
 	}
 
-	service := application.NewOrderService(repository, paymentGateway)
+	orderService := application.NewOrderService(orderRepository, paymentGateway)
 
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", configs.GetApplicationPort()))
 	if err != nil {
 		log.Fatalf("failed to bind port 8080 due to error %v", err)
 	}
 
-	rpc.RunAPI(listener, service)
+	rpc.RunAPI(listener, orderService)
 }

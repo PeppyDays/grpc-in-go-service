@@ -7,4 +7,5 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./order/internal/infrastructure/repository/migrations:/docker-entrypoint-initdb.d
+      - ./order/internal/infrastructure/repository/migrations/init.sql:/docker-entrypoint-initdb.d/init_order.sql
+      - ./payment/internal/infrastructure/repository/migrations/init.sql:/docker-entrypoint-initdb.d/init_payment.sql
