@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	"net"
+
 	"google.golang.org/genproto/googleapis/rpc/errdetails"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 	order "listing_6.7"
-	"log"
-	"net"
 )
 
 type server struct {
@@ -40,7 +41,6 @@ func (s *server) Create(ctx context.Context, in *order.CreateOrderRequest) (*ord
 }
 
 func main() {
-
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", 8080))
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)

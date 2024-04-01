@@ -2,11 +2,12 @@ package main
 
 import (
 	"context"
+	"log"
+	"time"
+
 	"github.com/sony/gobreaker"
 	"google.golang.org/grpc"
 	order "listing_6.5"
-	"log"
-	"time"
 )
 
 var cb *gobreaker.CircuitBreaker
@@ -51,5 +52,4 @@ func main() {
 		}
 		time.Sleep(1 * time.Second)
 	}
-
 }

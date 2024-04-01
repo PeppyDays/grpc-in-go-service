@@ -2,11 +2,12 @@ package main
 
 import (
 	"context"
+	"log"
+
 	"google.golang.org/genproto/googleapis/rpc/errdetails"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 	order "listing_6.7"
-	"log"
 )
 
 func main() {

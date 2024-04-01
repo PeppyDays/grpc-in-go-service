@@ -7,7 +7,6 @@ message CreateOrderRequest {
   float price = 3;
 }
 
-
 message CreateOrderResponse {
   int32 order_id = 1;
 }
