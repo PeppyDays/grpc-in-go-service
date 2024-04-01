@@ -3,12 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	"google.golang.org/grpc"
-	shipping "listing_6.1"
 	"log"
 	"math/rand"
 	"net"
 	"time"
+
+	"google.golang.org/grpc"
+	shipping "listing_6.1"
 )
 
 type server struct {
@@ -21,15 +22,15 @@ func (s *server) Create(ctx context.Context, in *shipping.CreateShippingRequest)
 }
 
 func main() {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	_, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 
 	go func() {
-		res := randomFunc(ctx, "a")
+		res := randomFunc("a")
 		log.Println(res)
 		cancel()
 	}()
 	go func() {
-		res := randomFunc(ctx, "b")
+		res := randomFunc("b")
 		log.Println(res)
 		cancel()
 	}()
@@ -44,8 +45,7 @@ func main() {
 	grpcServer.Serve(listener)
 }
 
-func randomFunc(ctx context.Context, name string) string {
-	rand.Seed(time.Now().UnixNano())
+func randomFunc(name string) string {
 	min := 3
 	max := 7
 	sleepTime := rand.Intn(max-min+1) + min

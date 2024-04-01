@@ -2,10 +2,11 @@ package main
 
 import (
 	"context"
-	"google.golang.org/grpc"
-	shipping "listing_6.1"
 	"log"
 	"time"
+
+	"google.golang.org/grpc"
+	shipping "listing_6.1"
 )
 
 func main() {
