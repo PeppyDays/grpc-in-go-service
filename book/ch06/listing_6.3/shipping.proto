@@ -7,7 +7,6 @@ message CreateShippingRequest {
   string address = 3;
 }
 
-
 message CreateShippingResponse {
   int32 shipping_id = 1;
 }

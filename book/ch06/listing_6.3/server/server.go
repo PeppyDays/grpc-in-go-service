@@ -3,11 +3,12 @@ package main
 import (
 	"context"
 	"fmt"
-	"google.golang.org/grpc"
-	shipping "listing_6.3"
 	"log"
 	"net"
 	"time"
+
+	"google.golang.org/grpc"
+	shipping "listing_6.3"
 )
 
 type server struct {

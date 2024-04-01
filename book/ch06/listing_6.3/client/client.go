@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
+	"log"
+	"time"
+
 	grpc_retry "github.com/grpc-ecosystem/go-grpc-middleware/retry"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	shipping "listing_6.3"
-	"log"
-	"time"
 )
 
 func main() {
