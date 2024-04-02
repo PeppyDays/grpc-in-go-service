@@ -41,9 +41,9 @@ func NewGORMOrderRepository(dataSourceURL string) (*GORMOrderRepository, error) 
 	return &GORMOrderRepository{db: db}, nil
 }
 
-func (r GORMOrderRepository) Get(id string) (domain.Order, error) {
+func (r GORMOrderRepository) Get(id int64) (domain.Order, error) {
 	var orderDataModel Order
-	res := r.db.First(&orderDataModel, id)
+	res := r.db.Preload("OrderItems").First(&orderDataModel, id)
 
 	if res.Error != nil {
 		return domain.Order{}, res.Error

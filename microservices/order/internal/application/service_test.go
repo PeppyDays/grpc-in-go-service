@@ -29,7 +29,7 @@ func (r *mockedOrderRepository) Save(order *domain.Order) error {
 	return args.Error(0)
 }
 
-func (r *mockedOrderRepository) Get(id string) (domain.Order, error) {
+func (r *mockedOrderRepository) Get(id int64) (domain.Order, error) {
 	args := r.Called(id)
 	return args.Get(0).(domain.Order), args.Error(1)
 }
